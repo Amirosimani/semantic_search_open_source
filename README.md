@@ -1,19 +1,9 @@
-# Using Transformers to modernize Elasticsearch
 
-Lexical search has limitations since it looks for literal matches (or variants of it like the stemmed version) of the query words typed by the user. This approach misses the context and doesn’t understand what the whole query really means. For example, when a user searches for “insurance”, a lexical-based searching solution will fail to surface documents that only have “Medicaid” in them. This is probably a significant source of complaints.
+# Open-source Semantic Search
 
-To address that issue, I suggest a solution that uses semantic search on top of their existing tech-stack (here, I limit that assumption to elasticsearch).
+Use LLMs to search documents in Elasticsearch
 
-## Approach
-
-* Using a pre-trained **T5-small** model, I create document-level embeddings for the [**Newsgroup** dataset](https://huggingface.co/datasets/newsgroup)
-    * Many pre-trained models are suitable for semantic search and sentence representation in general. Based on the requirements, we can fine-tune the selected model on the company’s own corpus.
-* Start a single-node Elasticsearch cluster locally
-* Create and index and index the documents and their embeddings.
-* Finally, generate query vectors using the same encoder at search time to retrieve the most similar vectors to the query vector.
-
-
-The provided notebook will do all the above steps except for starting an Elasticsearch cluster. To do so, please follow the steps below.
+link to the [medium article](https://amirhos-imani.medium.com/open-source-semantic-search-a656e4c5483a).
 
 --------------
 #### Start a single-node Elasticsearch cluster locally
